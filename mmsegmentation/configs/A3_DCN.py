@@ -1,4 +1,4 @@
-# 文件名：twins_pcpvt_fpn_dsaspp_mydata.py
+
 
 _base_ = [
     './_base_/datasets/my_dataset.py',
@@ -59,8 +59,8 @@ model = dict(
     # ---------------- Depthwise Separable ASPP Decode Head ----------------
     decode_head=dict(
         type='ASPPHead',
-        in_channels=128,  # FPN 输出单层通道
-        in_index=0,  # 用 FPN 输出的第0层（你也可以换成 1、2、3）
+        in_channels=128,  
+        in_index=0,  
         channels=128,
         dilations=(1, 12, 24, 36),
         dropout_ratio=0.1,
@@ -78,7 +78,7 @@ model = dict(
     auxiliary_head=dict(
         type='FCNHead',
         in_channels=128,
-        in_index=1,   # 取 FPN 中间层监督
+        in_index=1,  
         channels=64,
         num_convs=1,
         concat_input=False,
