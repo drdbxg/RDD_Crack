@@ -50,7 +50,7 @@ model = dict(
     neck=dict(
         type='FPN',
         in_channels=[64, 128, 320, 512],
-        out_channels=128,  # 降低通道减少显存占用
+        out_channels=128,  
         num_outs=4,
         start_level=0,
         add_extra_convs='on_output'
@@ -63,7 +63,7 @@ model = dict(
         in_index=[0, 1, 2, 3],
         channels=128,
         num_classes=2,
-        feature_strides=[4, 8, 16, 32],  # 这里是 FPN 每层对应的下采样倍数
+        feature_strides=[4, 8, 16, 32],  
         dropout_ratio=0.1,
         norm_cfg=dict(type='BN', requires_grad=True),
         align_corners=False,
@@ -77,7 +77,7 @@ model = dict(
     auxiliary_head=dict(
         type='FCNHead',
         in_channels=128,
-        in_index=1,  # FPN 中间层监督
+        in_index=1,  
         channels=64,
         num_convs=1,
         concat_input=False,
@@ -94,7 +94,7 @@ model = dict(
 
     # ---------------- Training & Testing ----------------
     train_cfg=dict(),
-    test_cfg=dict(mode='whole')  # 可改为 'slide' + crop_size/stride
+    test_cfg=dict(mode='whole')  
 )
 
 # ---------------- 优化器 ----------------
